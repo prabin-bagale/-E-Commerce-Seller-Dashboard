@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import apiClient from '../api/apiClient';
+import { exportToCSV } from '../utils/csvExport';
+
+
+<button onClick={() => exportToCSV(products, 'products.csv')}>
+  Export Products to CSV
+</button>
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
