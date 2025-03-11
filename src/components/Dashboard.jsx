@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductForm from './ProductForm';
 import ProductList from './ProductList';
-import Analytics from './Analytics'; // Import Analytics
+import Analytics from './Analytics';
 import { useAuth } from '../context/AuthContext';
 
 const Dashboard = () => {
@@ -15,10 +15,7 @@ const Dashboard = () => {
       </div>
       <ProductForm />
       <ProductList />
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4">Analytics Dashboard</h2>
-        <Analytics /> {/* Display Analytics Component */}
-      </div>
+      <Analytics />
     </div>
   );
 };
