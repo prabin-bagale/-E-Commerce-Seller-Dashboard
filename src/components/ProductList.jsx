@@ -10,6 +10,7 @@ import { exportToCSV } from '../utils/csvExport';
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [editProduct, setEditProduct] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,6 +24,10 @@ const ProductList = () => {
 
     fetchProducts();
   }, []);
+
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleDelete = async (id) => {
     try {
@@ -47,7 +52,14 @@ const ProductList = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Product List</h2>
+      <h2 className="text-2xl font-bold mb-4">Product List</h2>
+      <input
+        type="text"
+        placeholder="Search products"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="border p-2 w-full mb-4"
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <div key={product.id} className="border p-4 rounded-lg shadow-md">
