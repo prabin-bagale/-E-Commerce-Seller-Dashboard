@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import apiClient from '../api/apiClient';
 
-const ProductForm = () => {
+const ProductForm = ({ setProducts }) => {
   const [product, setProduct] = useState({ title: '', price: '', image: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await apiClient.post('/products', product);
+      const response = await apiClient.post('/products', product);
+      setProducts((prevProducts) => [...prevProducts, response.data]); // Update the product list
       alert('Product added successfully!');
       setProduct({ title: '', price: '', image: '' });
     } catch (error) {
