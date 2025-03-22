@@ -5,9 +5,13 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Dashboard from './components/Dashboard';
 import { AuthProvider } from './context/AuthContext';
+import ProductData from './components/ProductData';
 
-function App() {
+ 
+const App =() =>{
+ 
   return (
+    
     <Router>
       <AuthProvider>
         <Routes>
@@ -15,9 +19,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/productlist" element={<ProductData />} />
         </Routes>
       </AuthProvider>
     </Router>
+
   );
 }
 
